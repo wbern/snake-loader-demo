@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Snake loader demo</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #fff; color: #0f1419;
+      font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; }
+    main { height: 100%; display: grid; place-items: center; text-align: center; }
+    h1 { font-weight: 600; margin: 0 0 .5rem; }
+    p { color: #6b6b6b; margin: 0 0 1.5rem; }
+    button { font: inherit; padding: .6rem 1.4rem; border: 2px solid #0f1419;
+      background: #0f1419; color: #fff; border-radius: 999px; cursor: pointer; }
+    a { color: inherit; }
+  </style>
+</head>
+<body>
+  <main>
+    <div>
+      <h1>Loading…</h1>
+      <p>Move your cursor near the snake. Source: <a href="snake.js">snake.js</a></p>
+      <button id="toggle">stop()</button>
+    </div>
+  </main>
+  <script src="snake.js"></script>
+  <script>
+    let snake = startSnake()
+    const btn = document.getElementById('toggle')
+    btn.onclick = () => {
+      if (snake) { snake.stop(); snake = null; btn.textContent = 'startSnake()' }
+      else { snake = startSnake(); btn.textContent = 'stop()' }
+    }
+  </script>
+</body>
+</html>
